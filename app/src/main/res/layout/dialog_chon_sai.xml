@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="520dp"
+    android:layout_gravity="center"
+    android:padding="10dp">
+
+    <!-- 1. Khung gấu khóc ôm bảng gỗ -->
+    <ImageView
+        android:id="@+id/img_bear_frame"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="75dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/khungchonsai"
+        android:importantForAccessibility="no"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 2. Tiêu đề Ôi Không! (Đặt đè phía trên khung gấu) -->
+    <ImageView
+        android:id="@+id/img_dialog_title"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/oikhong"
+        android:elevation="4dp"
+        android:importantForAccessibility="no"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- 3. Icon trái tim tan vỡ -->
+    <ImageView
+        android:id="@+id/img_broken_heart"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/iconmattim"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@id/tv_wrong_msg"
+        app:layout_constraintStart_toStartOf="@id/img_bear_frame"
+        app:layout_constraintEnd_toEndOf="@id/img_bear_frame" />
+
+    <!-- 4. Dòng chữ "Bạn đã làm sai" -->
+    <TextView
+        android:id="@+id/tv_wrong_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Bạn đã làm sai"
+        android:textColor="#B5214D"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/layout_lives_status"
+        app:layout_constraintStart_toStartOf="@id/img_bear_frame"
+        app:layout_constraintEnd_toEndOf="@id/img_bear_frame" />
+
+    <!-- 5. Khối hiển thị số mạng "Còn lại: ❤️❤️" -->
+    <LinearLayout
+        android:id="@+id/layout_lives_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/img_bear_frame"
+        app:layout_constraintStart_toStartOf="@id/img_bear_frame"
+        app:layout_constraintEnd_toEndOf="@id/img_bear_frame">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Còn lại: "
+            android:textColor="#B5214D"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Vùng chứa các icon tim động được sinh tự động từ Java (containerHearts) -->
+        <LinearLayout
+            android:id="@+id/containerHearts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <!-- 6. Nút bấm Tiếp tục lượt mới -->
+    <ImageButton
+        android:id="@+id/btnNextTurn"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="-10dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nuttieptucluotmoi"
+        android:contentDescription="Tiếp tục lượt mới"
+        app:layout_constraintTop_toBottomOf="@id/img_bear_frame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

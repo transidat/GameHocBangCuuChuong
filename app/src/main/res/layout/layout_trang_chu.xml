@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nentrangchu">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <!-- ================= KHỐI HEADER XẾP TẦNG ================= -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false">
+
+                <!-- Logo Bảng cửu chương lớn nằm sát lề trái -->
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="230dp"
+                    android:layout_height="230dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/iconbcc"
+                    android:layout_marginTop="28dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- TẦNG 1: Điểm kinh nghiệm (KN) nằm TRÊN CÙNG bên phải -->
+                <LinearLayout
+                    android:id="@+id/layout_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:elevation="2dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/sao" />
+
+                    <TextView
+                        android:id="@+id/tv_exp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 KN"
+                        android:textColor="#B5214D"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- TẦNG 2: Bong bóng thoại "Xin chào..." nằm DƯỚI 120KN -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_bubble"
+                    android:layout_width="135dp"
+                    android:layout_height="82dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/bongbong1"
+                    android:elevation="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_exp">
+
+                    <TextView
+                        android:id="@+id/tv_welcome_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:text="Xin chào"
+                        android:textAlignment="center"
+                        android:textColor="#B5214D"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- TẦNG 3: Con gấu đọc sách nằm DƯỚI Bong bóng thoại -->
+                <ImageView
+                    android:id="@+id/img_bear_read"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="-18dp"
+                    android:elevation="3dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icongau2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_bubble" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!-- ================= KHỐI MENU CHÍNH (GRID 6 NÚT) ================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_menu"
+                android:elevation="3dp"
+                android:orientation="vertical"
+                android:padding="22dp"
+                android:layout_marginTop="12dp"
+                android:scaleY="1.1">
+
+                <!-- HÀNG 1: Đập chuột | Hứng bóng | Đua xe -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="108dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- Nút Đập chuột (Cam) -->
+                    <LinearLayout
+                        android:id="@+id/btn_game_dap_chuot"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_orange"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/iconchuot" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Đập chuột"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Nút Hứng bóng (Xanh lá) -->
+                    <LinearLayout
+                        android:id="@+id/btn_game_hung_bong"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_green"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/iconbong" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Hứng bóng"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Nút Đua xe (Xanh dương) -->
+                    <LinearLayout
+                        android:id="@+id/btn_game_dua_xe"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_blue"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/iconxe" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Đua xe"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- HÀNG 2: Chèo thuyền | Nhiệm vụ | Thành tích -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="108dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- Nút Chèo thuyền (Xanh ngọc/Teal) -->
+                    <LinearLayout
+                        android:id="@+id/btn_game_cheo_thuyen"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_teal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/iconthuyen" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Chèo thuyền"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Nút Nhiệm vụ (Hồng đỏ) -->
+                    <LinearLayout
+                        android:id="@+id/btn_nhiem_vu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_pink"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/iconqua" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Nhiệm vụ"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Nút Thành tích (Tím) -->
+                    <LinearLayout
+                        android:id="@+id/btn_thanh_tich"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_purple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/iconcup" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Thành tích"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ================= KHỐI FOOTER (GẤU VẪY TAY + BONG BÓNG THOẠI) ================= -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_marginTop="30dp">
+
+                <!-- Ảnh Gấu vẫy tay bên trái dưới -->
+                <ImageView
+                    android:id="@+id/img_bear_wave"
+                    android:layout_width="125dp"
+                    android:layout_height="135dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icongau1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- Bong bóng thoại đám mây bên phải gấu -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="245dp"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="-18dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bongbong2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_bear_wave">
+
+                    <TextView
+                        android:id="@+id/tv_bottom_speech"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="Bạn đã sẵn sàng phá\n kỷ lục hôm nay chưa?"
+                        android:textAlignment="center"
+                        android:textColor="#B5214D"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

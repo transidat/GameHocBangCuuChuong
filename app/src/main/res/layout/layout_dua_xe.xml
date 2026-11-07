@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nenchung">
+
+    <!-- Container bọc toàn bộ giao diện game chính để dễ quản lý trạng thái -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_game_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ================= THANH ĐIỀU KHIỂN & TRẠNG THÁI PHÍA TRÊN ================= -->
+
+        <!-- Nút Thoát -->
+        <ImageButton
+            android:id="@+id/btn_game_back"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Thoát"
+            android:scaleType="fitCenter"
+            android:src="@drawable/thoat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Nút Tạm dừng -->
+        <ImageButton
+            android:id="@+id/btn_game_pause"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="0dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Tạm dừng"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tamdung"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/btn_game_back"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back" />
+
+        <!-- Khu vực hiển thị 3 Trái tim mạng sống -->
+        <LinearLayout
+            android:id="@+id/layout_hearts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/btn_game_pause"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:id="@+id/img_heart1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Mạng 1"
+                android:src="@drawable/tim" />
+
+            <ImageView
+                android:id="@+id/img_heart2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Mạng 2"
+                android:src="@drawable/tim" />
+
+            <ImageView
+                android:id="@+id/img_heart3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Mạng 3"
+                android:src="@drawable/tim" />
+        </LinearLayout>
+
+        <!-- Đồng hồ đếm ngược với icon time -->
+        <LinearLayout
+            android:id="@+id/layout_timer_box"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/layout_hearts"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="Đồng hồ"
+                android:src="@drawable/time" />
+
+            <TextView
+                android:id="@+id/tv_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="10s"
+                android:textColor="#0B1B72"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Thanh hiển thị điểm Kinh nghiệm bên phải ngoài cùng -->
+        <LinearLayout
+            android:id="@+id/layout_score_box"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_pill_white"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="6dp"
+                android:contentDescription="Ngôi sao"
+                android:src="@drawable/sao" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 KN"
+                android:textColor="#B5214D"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- ================= KHỐI BẢNG CÂU HỎI TRẮNG BO GÓC ================= -->
+        <LinearLayout
+            android:id="@+id/layout_quiz_board"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/bg_quiz_card"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="0dp"
+                android:contentDescription="Icon đua xe"
+                android:src="@drawable/iconduaxe" />
+
+            <TextView
+                android:id="@+id/tv_question_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6 × 7 = ?"
+                android:textColor="#B5214D"
+                android:textSize="44sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Biểu tượng Combo lửa nhỏ phía dưới bảng câu hỏi -->
+        <LinearLayout
+            android:id="@+id/layout_combo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_combo_pill"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_quiz_board">
+
+            <TextView
+                android:id="@+id/tv_combo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Combo x0 "
+                android:textColor="#B5214D"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="Combo Lửa"
+                android:src="@drawable/lua" />
+        </LinearLayout>
+
+        <!-- ================= VÙNG ĐƯỜNG ĐUA TRUNG TÂM ================= -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_road_container"
+            android:layout_width="260dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/khungduongdua"
+            app:layout_constraintBottom_toTopOf="@id/layout_answers_grid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_combo">
+
+            <!-- Vật cản LÀN TRÁI (Biển báo công trường - vat2) -->
+            <ImageView
+                android:id="@+id/layout_obstacle_left"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="50dp"
+                android:contentDescription="Vật cản trái"
+                android:src="@drawable/vat2"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Vật cản LÀN PHẢI (Chóp nón giao thông - vat1) -->
+            <ImageView
+                android:id="@+id/layout_obstacle_right"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                android:contentDescription="Vật cản phải"
+                android:src="@drawable/vat1"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Xe đua người chơi (xe.png) -->
+            <ImageView
+                android:id="@+id/img_car"
+                android:layout_width="45dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="24dp"
+                android:contentDescription="Xe đua"
+                android:scaleType="fitCenter"
+                android:src="@drawable/xe"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- ================= LƯỚI NÚT ĐÁP ÁN (2x2) ================= -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_answers_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_ans_layout_1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_pill_white"
+                android:clickable="true"
+                android:elevation="3dp"
+                android:focusable="true"
+                app:layout_constraintEnd_toStartOf="@id/btn_ans_layout_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_ans_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="36"
+                    android:textColor="#B5214D"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_ans_layout_2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_pill_white"
+                android:clickable="true"
+                android:elevation="3dp"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_ans_layout_1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_ans_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="42"
+                    android:textColor="#B5214D"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_ans_layout_3"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_pill_white"
+                android:clickable="true"
+                android:elevation="3dp"
+                android:focusable="true"
+                app:layout_constraintEnd_toStartOf="@id/btn_ans_layout_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_ans_layout_1">
+
+                <TextView
+                    android:id="@+id/tv_ans_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="48"
+                    android:textColor="#B5214D"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_ans_layout_4"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_pill_white"
+                android:clickable="true"
+                android:elevation="3dp"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_ans_layout_3"
+                app:layout_constraintTop_toBottomOf="@id/btn_ans_layout_2">
+
+                <TextView
+                    android:id="@+id/tv_ans_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45"
+                    android:textColor="#B5214D"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

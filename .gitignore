@@ -1,0 +1,30 @@
+# Gradle & Build outputs
+.gradle/
+/build/
+/*/build/
+*.keystore
+*.jks
+*.apk
+*.aar
+*.aab
+
+# Local configuration (Chứa đường dẫn SDK cá nhân - Rất quan trọng cần ignore)
+local.properties
+
+# Android Studio & IntelliJ IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+/captures
+.externalNativeBuild
+.cxx
+
+# Class files & logs
+*.class
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db

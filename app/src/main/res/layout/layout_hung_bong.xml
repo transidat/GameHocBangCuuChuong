@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nenhungbong">
+
+    <!-- Container bọc toàn bộ giao diện game chính để dễ ẩn/hiện khi tạm dừng -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_game_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ================= THANH ĐIỀU KHIỂN & TRẠNG THÁI PHÍA TRÊN ================= -->
+
+        <!-- Nút Thoát (Mũi tên cam) -->
+        <ImageButton
+            android:id="@+id/btn_game_back"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Thoát"
+            android:scaleType="fitCenter"
+            android:src="@drawable/thoat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Nút Tạm dừng -->
+        <ImageButton
+            android:id="@+id/btn_game_pause"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="0dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Tạm dừng"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tamdung"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/btn_game_back"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back" />
+
+        <!-- Khu vực hiển thị 3 Trái tim mạng sống -->
+        <LinearLayout
+            android:id="@+id/layout_hearts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/btn_game_pause"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:id="@+id/img_heart1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Mạng 1"
+                android:src="@drawable/tim" />
+
+            <ImageView
+                android:id="@+id/img_heart2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Mạng 2"
+                android:src="@drawable/tim" />
+
+            <ImageView
+                android:id="@+id/img_heart3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Mạng 3"
+                android:src="@drawable/tim" />
+        </LinearLayout>
+
+        <!-- Đồng hồ đếm ngược với icon time -->
+        <LinearLayout
+            android:id="@+id/layout_timer_box"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/layout_hearts"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="Đồng hồ"
+                android:src="@drawable/time" />
+
+            <TextView
+                android:id="@+id/tv_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20s"
+                android:textColor="#0B1B72"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Thanh hiển thị điểm Kinh nghiệm (Sao vàng) bên phải ngoài cùng -->
+        <LinearLayout
+            android:id="@+id/layout_score_box"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_pill_white"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="6dp"
+                android:contentDescription="Ngôi sao"
+                android:src="@drawable/sao" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 KN"
+                android:textColor="#B5214D"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- ================= KHỐI BẢNG CÂU HỎI TRẮNG BO GÓC ================= -->
+        <LinearLayout
+            android:id="@+id/layout_quiz_board"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/bg_quiz_card"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_game_back">
+
+            <TextView
+                android:id="@+id/tv_question_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6 × 6 = ?"
+                android:textColor="#B5214D"
+                android:textSize="48sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Biểu tượng Combo lửa nhỏ phía dưới bảng điểm -->
+        <LinearLayout
+            android:id="@+id/layout_combo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_combo_pill"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_quiz_board">
+
+            <TextView
+                android:id="@+id/tv_combo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Combo x0 "
+                android:textColor="#B5214D"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="Combo Lửa"
+                android:src="@drawable/lua" />
+        </LinearLayout>
+
+        <!-- ================= VÙNG KHÔNG GIAN GAMEPLAY CHÍNH ================= -->
+        <!-- Quả bóng 1 (Bên trái) -->
+        <RelativeLayout
+            android:id="@+id/layout_ball1"
+            android:layout_width="75dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_combo">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Bóng 1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bong1" />
+
+            <TextView
+                android:id="@+id/tv_ans_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="25dp"
+                android:text="36"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- Quả bóng 2 (Ở giữa) -->
+        <RelativeLayout
+            android:id="@+id/layout_ball2"
+            android:layout_width="75dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_combo">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Bóng 2"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bong2" />
+
+            <TextView
+                android:id="@+id/tv_ans_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="19dp"
+                android:text="48"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- Quả bóng 3 (Bên phải) -->
+        <RelativeLayout
+            android:id="@+id/layout_ball3"
+            android:layout_width="75dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_combo">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Bóng 3"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bong3" />
+
+            <TextView
+                android:id="@+id/tv_ans_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:text="42"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- Chiếc Giỏ hứng quà (Đặt ở thảm cỏ phía dưới) -->
+        <ImageView
+            android:id="@+id/img_basket"
+            android:layout_width="115dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="56dp"
+            android:contentDescription="Giỏ hứng"
+            android:scaleType="fitCenter"
+            android:src="@drawable/gio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Nút di chuyển TRÁI -->
+        <ImageButton
+            android:id="@+id/btn_move_left"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="70dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Di chuyển sang trái"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trai"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Nút di chuyển PHẢI -->
+        <ImageButton
+            android:id="@+id/btn_move_right"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="70dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Di chuyển sang phải"
+            android:scaleType="fitCenter"
+            android:src="@drawable/phai"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

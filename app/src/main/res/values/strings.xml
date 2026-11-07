@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GameHocBangCuuChuong</string>
+
+    <!-- Định dạng điểm số, thời gian, combo -->
+    <string name="score_exp_format">%1$d KN</string>
+    <string name="bonus_exp_format">+%1$d KN</string>
+    <string name="reward_exp_format">+ %1$d KN</string>
+    <string name="welcome_name_format">Xin chào %1$s</string>
+    <string name="welcome_default">Xin chào bạn</string>
+    <string name="progress_ratio_format">%1$d/%2$d</string>
+    <string name="level_format">Cấp %1$d</string>
+    <string name="level_ratio_format">%1$d / %2$d KN</string>
+    <string name="timer_seconds_format">%1$ds</string>
+    <string name="combo_format">Combo x%1$d </string>
+    <string name="combo_multiplier_format">x%1$d</string>
+
+    <!-- Rương phần thưởng -->
+    <string name="chest_desc_claimable">Nhấn rương để nhận 50 KN phần thưởng!</string>
+    <string name="chest_desc_claimed">Bạn đã nhận rương phần thưởng (50 KN)!</string>
+    <string name="chest_desc_uncompleted">Hoàn thành 3 nhiệm vụ để mở rương phần thưởng!</string>
+
+    <!-- Nút bấm nhiệm vụ -->
+    <string name="mission_btn_claimed">Đã nhận</string>
+    <string name="mission_btn_claim">Nhận quà</string>
+    <string name="mission_btn_do_now">Làm ngay</string>
+</resources>

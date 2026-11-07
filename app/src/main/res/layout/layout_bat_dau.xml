@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nenmodau">
+
+    <!-- Bọc toàn bộ các phần tử vào một khối trung tâm để không bị tràn màn hình khi chạy -->
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Khối bong bóng thoại chứa chữ "Nhập tên của bạn" -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_bubble"
+            android:layout_width="260dp"
+            android:layout_height="130dp"
+            android:background="@drawable/bongbong1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="43dp"
+                android:text="Nhập tên\ncủa bạn"
+                android:textAlignment="center"
+                android:textColor="#B5214D"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Khối chú gấu ôm bảng gỗ và ô nhập tên -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_bear_container"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_marginTop="5dp">
+
+            <!-- Ảnh chú gấu ôm bảng gỗ -->
+            <ImageView
+                android:id="@+id/img_bear"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/nhapten"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Ô nhập chữ đặt sát vào bên trái của bảng gỗ -->
+            <EditText
+                android:id="@+id/edt_player_name"
+                android:layout_width="145dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginBottom="32dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:hint="Nhập tên ..."
+                android:inputType="textPersonName"
+                android:textColor="#5D4037"
+                android:textColorHint="#BCAAA4"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Nút bấm SẴN SÀNG dạng hình ảnh -->
+        <ImageButton
+            android:id="@+id/btn_ready"
+            android:layout_width="180dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nutsansang" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

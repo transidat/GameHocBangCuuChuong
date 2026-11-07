@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nenchung">
+
+    <!-- Container chứa toàn bộ giao diện chơi game, có thể ẩn đi khi Tạm dừng -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_game_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ================= THANH ĐIỀU KHIỂN & TRẠNG THÁI PHÍA TRÊN ================= -->
+
+        <!-- Nút Thoát (Mũi tên cam) -->
+        <ImageButton
+            android:id="@+id/btn_game_back"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/thoat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Nút Tạm dừng -->
+        <ImageButton
+            android:id="@+id/btn_game_pause"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="0dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tamdung"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/btn_game_back"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back" />
+
+        <!-- Khu vực hiển thị 3 Trái tim mạng sống -->
+        <LinearLayout
+            android:id="@+id/layout_hearts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/btn_game_pause"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:id="@+id/img_heart1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tim" />
+
+            <ImageView
+                android:id="@+id/img_heart2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tim" />
+
+            <ImageView
+                android:id="@+id/img_heart3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tim" />
+        </LinearLayout>
+
+        <!-- Đồng hồ đếm ngược với icon time -->
+        <LinearLayout
+            android:id="@+id/layout_timer_box"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintStart_toEndOf="@id/layout_hearts"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/time" />
+
+            <TextView
+                android:id="@+id/tv_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10s"
+                android:textColor="#0B1B72"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Thanh hiển thị điểm Kinh nghiệm (Sao vàng) bên phải ngoài cùng -->
+        <LinearLayout
+            android:id="@+id/layout_score_box"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_pill_white"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_game_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="6dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/sao" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 KN"
+                android:textColor="#B5214D"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- ================= KHỐI BẢNG CÂU HỎI TRẮNG BO GÓC ================= -->
+        <LinearLayout
+            android:id="@+id/layout_quiz_board"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/bg_quiz_card"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_game_back">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/bua" />
+
+            <TextView
+                android:id="@+id/tv_question_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 × 8 = ?"
+                android:textColor="#B5214D"
+                android:textSize="48sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Biểu tượng Combo lửa nhỏ phía dưới bảng điểm -->
+        <LinearLayout
+            android:id="@+id/layout_combo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_combo_pill"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_quiz_board">
+
+            <TextView
+                android:id="@+id/tv_combo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Combo x0 "
+                android:textColor="#B5214D"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/lua" />
+        </LinearLayout>
+
+        <!-- ================= KHỐI NỀN CỎ VÀ 6 HANG CHUỘT ================= -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_mole_board"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/khung"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="440dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_combo">
+
+            <!-- Hang 1 (Chuột 1) -->
+            <FrameLayout
+                android:id="@+id/mouse_hole_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toTopOf="@id/mouse_hole_4"
+                app:layout_constraintEnd_toStartOf="@id/mouse_hole_2"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:src="@drawable/chuot" />
+
+                <TextView
+                    android:id="@+id/tv_ans_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="32dp"
+                    android:text="21"
+                    android:textColor="#B5214D"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Hang 2 (Chuột 2) -->
+            <FrameLayout
+                android:id="@+id/mouse_hole_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/mouse_hole_1"
+                app:layout_constraintEnd_toStartOf="@id/mouse_hole_3"
+                app:layout_constraintStart_toEndOf="@id/mouse_hole_1"
+                app:layout_constraintTop_toTopOf="@id/mouse_hole_1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:src="@drawable/chuot" />
+
+                <TextView
+                    android:id="@+id/tv_ans_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="28dp"
+                    android:text="24"
+                    android:textColor="#B5214D"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Hang 3 (Chuột 3) -->
+            <FrameLayout
+                android:id="@+id/mouse_hole_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/mouse_hole_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/mouse_hole_2"
+                app:layout_constraintTop_toTopOf="@id/mouse_hole_1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:src="@drawable/chuot" />
+
+                <TextView
+                    android:id="@+id/tv_ans_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="28dp"
+                    android:text="32"
+                    android:textColor="#B5214D"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Hang 4 (Chuột 4) -->
+            <FrameLayout
+                android:id="@+id/mouse_hole_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/mouse_hole_5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mouse_hole_1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:src="@drawable/chuot" />
+
+                <TextView
+                    android:id="@+id/tv_ans_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="32dp"
+                    android:text="28"
+                    android:textColor="#B5214D"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Hang 5 (Chuột 5) -->
+            <FrameLayout
+                android:id="@+id/mouse_hole_5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/mouse_hole_4"
+                app:layout_constraintEnd_toStartOf="@id/mouse_hole_6"
+                app:layout_constraintStart_toEndOf="@id/mouse_hole_4"
+                app:layout_constraintTop_toTopOf="@id/mouse_hole_4">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:src="@drawable/chuot" />
+
+                <TextView
+                    android:id="@+id/tv_ans_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="28dp"
+                    android:text="35"
+                    android:textColor="#B5214D"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Hang 6 (Chuột 6) -->
+            <FrameLayout
+                android:id="@+id/mouse_hole_6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/mouse_hole_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/mouse_hole_5"
+                app:layout_constraintTop_toTopOf="@id/mouse_hole_4">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:src="@drawable/chuot" />
+
+                <TextView
+                    android:id="@+id/tv_ans_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="28dp"
+                    android:text="18"
+                    android:textColor="#B5214D"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
