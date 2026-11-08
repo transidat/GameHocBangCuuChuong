@@ -20,7 +20,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "GameHocBangCuuChuong.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 1;
 
     // --- TÊN BẢNG VÀ CÁC CỘT CHO PLAYER ---
     public static final String TABLE_PLAYER = "players";
@@ -292,10 +292,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int getTotalCorrectByGame(String gameName) {
         SQLiteDatabase db = this.getReadableDatabase();
         int total = 0;
-        String altName = gameName.equals("Chèo thuyền") ? "Trèo thuyền" : gameName;
         try (Cursor cursor = db.rawQuery(
-                "SELECT SUM(" + COLUMN_RESULT_CORRECT + ") FROM " + TABLE_GAME_RESULT + " WHERE " + COLUMN_RESULT_GAME_NAME + " = ? OR " + COLUMN_RESULT_GAME_NAME + " = ?",
-                new String[]{gameName, altName}
+                "SELECT SUM(" + COLUMN_RESULT_CORRECT + ") FROM " + TABLE_GAME_RESULT + " WHERE " + COLUMN_RESULT_GAME_NAME + " = ?",
+                new String[]{gameName}
         )) {
             if (cursor != null && cursor.moveToFirst()) {
                 total = cursor.getInt(0);
@@ -308,10 +307,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int getHighestScoreByGame(String gameName) {
         SQLiteDatabase db = this.getReadableDatabase();
         int maxScore = 0;
-        String altName = gameName.equals("Chèo thuyền") ? "Trèo thuyền" : gameName;
         try (Cursor cursor = db.rawQuery(
-                "SELECT MAX(" + COLUMN_RESULT_SCORE + ") FROM " + TABLE_GAME_RESULT + " WHERE " + COLUMN_RESULT_GAME_NAME + " = ? OR " + COLUMN_RESULT_GAME_NAME + " = ?",
-                new String[]{gameName, altName}
+                "SELECT MAX(" + COLUMN_RESULT_SCORE + ") FROM " + TABLE_GAME_RESULT + " WHERE " + COLUMN_RESULT_GAME_NAME + " = ?",
+                new String[]{gameName}
         )) {
             if (cursor != null && cursor.moveToFirst()) {
                 maxScore = cursor.getInt(0);
@@ -323,10 +321,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Kiểm tra có lượt chơi đạt tối đa (không sai câu nào, từ 5 câu trở lên) hay không
     public boolean hasPerfectGame(String gameName) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String altName = gameName.equals("Chèo thuyền") ? "Trèo thuyền" : gameName;
         try (Cursor cursor = db.rawQuery(
-                "SELECT COUNT(*) FROM " + TABLE_GAME_RESULT + " WHERE (" + COLUMN_RESULT_GAME_NAME + " = ? OR " + COLUMN_RESULT_GAME_NAME + " = ?) AND " + COLUMN_RESULT_CORRECT + " >= 5 AND " + COLUMN_RESULT_CORRECT + " = " + COLUMN_RESULT_TOTAL,
-                new String[]{gameName, altName}
+                "SELECT COUNT(*) FROM " + TABLE_GAME_RESULT + " WHERE " + COLUMN_RESULT_GAME_NAME + " = ? AND " + COLUMN_RESULT_CORRECT + " >= 5 AND " + COLUMN_RESULT_CORRECT + " = " + COLUMN_RESULT_TOTAL,
+                new String[]{gameName}
         )) {
             if (cursor != null && cursor.moveToFirst()) {
                 return cursor.getInt(0) > 0;
