@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -17,7 +16,6 @@ import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
 import com.example.gamehocbangcuuchuong.utils.GameTimer;
 import com.example.gamehocbangcuuchuong.utils.QuestionGenerator;
-import com.example.gamehocbangcuuchuong.utils.ScoreManager;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -315,17 +313,7 @@ public class HungBongGame extends BaseGame {
             int selectedAns = Integer.parseInt(tvAnswers[index].getText().toString());
 
             if (currentQuestion.isCorrect(selectedAns)) {
-                correctAnswersCount++;
-                comboCount++;
-                int pointsGained = ScoreManager.calculateQuestionScore(comboCount);
-                gameScore += pointsGained;
-
-                updateScoreAndComboUI();
-
-                String toastMsg = (comboCount > 1)
-                        ? "Hứng trúng đáp án đúng! Combo x" + comboCount + " (+" + pointsGained + " KN) 🎈"
-                        : "Hứng trúng đáp án đúng! (+" + pointsGained + " KN) 🎈";
-                Toast.makeText(activity, toastMsg, Toast.LENGTH_SHORT).show();
+                handleCorrectAnswer("Hứng trúng đáp án đúng!", "🎈");
 
                 if (layoutGameContent != null) {
                     layoutGameContent.postDelayed(this::loadNextQuestion, 400);

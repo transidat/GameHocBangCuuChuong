@@ -2,6 +2,7 @@ package com.example.gamehocbangcuuchuong.game;
 
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
@@ -179,5 +180,29 @@ public abstract class BaseGame {
                 }
             });
         }
+    }
+
+    /**
+     * Xử lý khi trả lời đúng: tăng số câu đúng, tăng combo, tính và cộng điểm,
+     * cập nhật giao diện và hiển thị thông báo.
+     *
+     * @param actionMessage Thông báo hành động (ví dụ: "Đập chính xác!", "Lái xe về đích xuất sắc!")
+     * @param emoji Emoji đính kèm cuối thông báo
+     * @return Số điểm nhận được trong lượt này
+     */
+    protected int handleCorrectAnswer(String actionMessage, String emoji) {
+        correctAnswersCount++;
+        comboCount++;
+        int pointsGained = ScoreManager.calculateQuestionScore(comboCount);
+        gameScore += pointsGained;
+
+        updateScoreAndComboUI();
+
+        String toastMsg = (comboCount > 1)
+                ? actionMessage + " Combo x" + comboCount + " (+" + pointsGained + " KN) " + emoji
+                : actionMessage + " (+" + pointsGained + " KN) " + emoji;
+        Toast.makeText(activity, toastMsg, Toast.LENGTH_SHORT).show();
+
+        return pointsGained;
     }
 }

@@ -11,7 +11,6 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -19,7 +18,6 @@ import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
 import com.example.gamehocbangcuuchuong.utils.GameTimer;
 import com.example.gamehocbangcuuchuong.utils.QuestionGenerator;
-import com.example.gamehocbangcuuchuong.utils.ScoreManager;
 
 import java.util.Random;
 
@@ -182,18 +180,7 @@ public class CheoThuyenGame extends BaseGame {
             int selectedAns = Integer.parseInt(tvAnswers[index].getText().toString());
 
             if (currentQuestion.isCorrect(selectedAns)) {
-                correctAnswersCount++;
-                comboCount++;
-                int pointsGained = ScoreManager.calculateQuestionScore(comboCount);
-                gameScore += pointsGained;
-
-                updateScoreAndComboUI();
-
-                String toastMsg = (comboCount > 1)
-                        ? "Chèo thuyền về đích xuất sắc! Combo x" + comboCount + " (+" + pointsGained + " KN) 🚣‍♂️💨"
-                        : "Chèo thuyền về đích xuất sắc! (+" + pointsGained + " KN) 🚣‍♂️💨";
-                Toast.makeText(activity, toastMsg, Toast.LENGTH_SHORT).show();
-
+                handleCorrectAnswer("Chèo thuyền về đích xuất sắc!", "🚣‍♂️💨");
                 animateBoatToFinish(this::loadNextQuestion);
             } else {
                 animateBoatToCrash(() -> handleWrongAnswer("Bạn đã đâm \nvào vật cản!", this::loadNextQuestion));

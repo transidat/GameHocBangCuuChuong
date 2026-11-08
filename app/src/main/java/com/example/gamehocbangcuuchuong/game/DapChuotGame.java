@@ -2,13 +2,11 @@ package com.example.gamehocbangcuuchuong.game;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
 import com.example.gamehocbangcuuchuong.utils.GameTimer;
 import com.example.gamehocbangcuuchuong.utils.QuestionGenerator;
-import com.example.gamehocbangcuuchuong.utils.ScoreManager;
 
 public class DapChuotGame extends BaseGame {
     private View[] mouseHoles;
@@ -95,17 +93,7 @@ public class DapChuotGame extends BaseGame {
             int selectedAns = Integer.parseInt(tvAnswers[index].getText().toString());
 
             if (currentQuestion.isCorrect(selectedAns)) {
-                correctAnswersCount++;
-                comboCount++;
-                int pointsGained = ScoreManager.calculateQuestionScore(comboCount);
-                gameScore += pointsGained;
-
-                updateScoreAndComboUI();
-
-                String toastMsg = (comboCount > 1)
-                        ? "Đập chính xác! Combo x" + comboCount + " (+" + pointsGained + " KN) 🎯"
-                        : "Đập chính xác! (+" + pointsGained + " KN) 🎯";
-                Toast.makeText(activity, toastMsg, Toast.LENGTH_SHORT).show();
+                handleCorrectAnswer("Đập chính xác!", "🎯");
                 loadNextQuestion();
             } else {
                 handleWrongAnswer("Bạn đã làm sai", this::loadNextQuestion);
