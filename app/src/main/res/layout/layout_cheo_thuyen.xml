@@ -219,8 +219,8 @@
             <!-- Thuyền người chơi (thuyen.png) -->
             <ImageView
                 android:id="@+id/img_player_boat"
-                android:layout_width="70dp"
-                android:layout_height="60dp"
+                android:layout_width="84dp"
+                android:layout_height="72dp"
                 android:layout_marginStart="16dp"
                 android:contentDescription="Thuyền người chơi"
                 android:src="@drawable/thuyen"
