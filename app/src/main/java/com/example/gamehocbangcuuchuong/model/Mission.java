@@ -64,6 +64,7 @@ public class Mission {
 
     public void setCurrentProgress(int currentProgress) {
         this.currentProgress = currentProgress;
+        updateCompletionState();
     }
 
     public int getMaxProgress() {
@@ -72,6 +73,7 @@ public class Mission {
 
     public void setMaxProgress(int maxProgress) {
         this.maxProgress = maxProgress;
+        updateCompletionState();
     }
 
     public int getRewardPoints() {
@@ -134,8 +136,12 @@ public class Mission {
     public void updateProgress(int amount) {
         if (amount <= 0 || this.isCompleted) return;
         this.currentProgress = Math.min(this.maxProgress, this.currentProgress + amount);
-        if (this.currentProgress >= this.maxProgress) {
-            this.isCompleted = true;
+        updateCompletionState();
+    }
+
+    private void updateCompletionState() {
+        if (this.maxProgress > 0) {
+            this.isCompleted = (this.currentProgress >= this.maxProgress);
         }
     }
 
