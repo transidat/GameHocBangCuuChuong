@@ -368,7 +368,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="Badge 4"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/icondanhhieud" />
+                            android:src="@drawable/icondanhhieue" />
 
                         <TextView
                             android:id="@+id/tv_badge_4_title"
