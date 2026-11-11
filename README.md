@@ -6,6 +6,10 @@
 
 ## 🌟 Tính Năng Nổi Bật
 
+### 👤 Quản Lý Người Chơi (Player Profile)
+- **Khởi đầu thân thiện:** Màn hình Bắt đầu cho phép nhập tên người chơi để cá nhân hóa trải nghiệm.
+- **Đồng bộ dữ liệu:** Điểm cao nhất (`high_score`) và tổng điểm KN (`total_score`) được lưu trữ và cập nhật tự động theo tên từng người chơi trong CSDL SQLite.
+
 ### 🎮 4 Mini-Game Học Tập Hấp Dẫn
 1. 🔨 **Đập Chuột (Whack-a-Mole):** Phản ứng nhanh mắt nhanh tay, quan sát phép toán hiển thị và đập trúng chú chuột mang đáp án chính xác trong 6 hang chuột.
 2. 🎈 **Hứng Bóng (Catch Ball):** Di chuyển giỏ hứng sang Trái/Phải để hứng quả bóng chứa kết quả đúng khi bóng đang rơi xuống.
@@ -24,6 +28,12 @@
 ### 🏆 Cấp Độ & Bảng Thành Tích (Levels & Achievements)
 - **Cấp độ người chơi (Level):** Tích lũy điểm KN qua từng trận đấu để thăng cấp (Cấp 1 cần 200 KN, mỗi cấp sau tăng thêm 100 KN).
 - **Thống kê chi tiết:** Hiển thị tổng số câu trả lời đúng tích lũy từ SQLite Database cho từng mini-game.
+- **Hệ thống Danh hiệu (Badges):** Mở khóa các huy hiệu danh giá khi hoàn thành thử thách đặc biệt:
+  1. 🐭 **Dũng sĩ diệt chuột:** Đập trúng 100 chú chuột.
+  2. 🎈 **Bàn tay khéo léo:** Hứng được 100 quả bóng.
+  3. 🏎️ **Tay lái cừ khôi:** Vượt qua 120 chặng đua.
+  4. 👑 **Vua đập chuột:** Đạt từ 500 điểm trở lên trong game Đập chuột.
+  5. ⭐ **Kỷ lục hứng bóng:** Đạt lượt chơi hoàn hảo (không bỏ sót quả nào) trong game Hứng bóng.
 
 ---
 
@@ -46,7 +56,7 @@
 - **Hoạt ảnh (Animation):** `ObjectAnimator`, `AnimatorSet`, `RotateAnimation`, `CountDownTimer`.
 - **Yêu cầu hệ thống:**
   - `minSdkVersion`: 24 (Android 7.0 Nougat trở lên)
-  - `targetSdkVersion`: 34+
+  - `targetSdkVersion`: 37
 
 ---
 
