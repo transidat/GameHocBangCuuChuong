@@ -16,10 +16,10 @@
         <!-- Nút Thoát (Mũi tên cam) -->
         <ImageButton
             android:id="@+id/btn_game_back"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:src="@drawable/thoat"
@@ -29,8 +29,8 @@
         <!-- Nút Tạm dừng -->
         <ImageButton
             android:id="@+id/btn_game_pause"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="0dp"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
@@ -53,20 +53,20 @@
 
             <ImageView
                 android:id="@+id/img_heart1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:src="@drawable/tim" />
 
             <ImageView
                 android:id="@+id/img_heart2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:src="@drawable/tim" />
 
             <ImageView
                 android:id="@+id/img_heart3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:src="@drawable/tim" />
         </LinearLayout>
 
@@ -206,18 +206,19 @@
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_max="440dp"
+            app:layout_constraintHeight_max="540dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_combo">
 
             <!-- Hang 1 (Chuột 1) -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mouse_hole_1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_margin="2dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:layout_constraintDimensionRatio="434:760"
                 app:layout_constraintBottom_toTopOf="@id/mouse_hole_4"
                 app:layout_constraintEnd_toStartOf="@id/mouse_hole_2"
                 app:layout_constraintHorizontal_chainStyle="spread"
@@ -226,99 +227,120 @@
                 app:layout_constraintVertical_chainStyle="spread">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:scaleX="1.5"
-                    android:scaleY="1.5"
-                    android:src="@drawable/chuot" />
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/chuot"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_ans_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="32dp"
+                    android:gravity="center"
                     android:text="21"
                     android:textColor="#B5214D"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.13" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Hang 2 (Chuột 2) -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mouse_hole_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_margin="2dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:layout_constraintDimensionRatio="434:760"
                 app:layout_constraintBottom_toBottomOf="@id/mouse_hole_1"
                 app:layout_constraintEnd_toStartOf="@id/mouse_hole_3"
                 app:layout_constraintStart_toEndOf="@id/mouse_hole_1"
                 app:layout_constraintTop_toTopOf="@id/mouse_hole_1">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:scaleX="1.5"
-                    android:scaleY="1.5"
-                    android:src="@drawable/chuot" />
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/chuot"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_ans_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="28dp"
+                    android:gravity="center"
                     android:text="24"
                     android:textColor="#B5214D"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.13" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Hang 3 (Chuột 3) -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mouse_hole_3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_margin="2dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:layout_constraintDimensionRatio="434:760"
                 app:layout_constraintBottom_toBottomOf="@id/mouse_hole_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/mouse_hole_2"
                 app:layout_constraintTop_toTopOf="@id/mouse_hole_1">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:scaleX="1.5"
-                    android:scaleY="1.5"
-                    android:src="@drawable/chuot" />
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/chuot"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_ans_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="28dp"
+                    android:gravity="center"
                     android:text="32"
                     android:textColor="#B5214D"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.13" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Hang 4 (Chuột 4) -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mouse_hole_4"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_margin="2dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:layout_constraintDimensionRatio="434:760"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/mouse_hole_5"
                 app:layout_constraintHorizontal_chainStyle="spread"
@@ -326,90 +348,110 @@
                 app:layout_constraintTop_toBottomOf="@id/mouse_hole_1">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:scaleX="1.5"
-                    android:scaleY="1.5"
-                    android:src="@drawable/chuot" />
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/chuot"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_ans_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="32dp"
+                    android:gravity="center"
                     android:text="28"
                     android:textColor="#B5214D"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.13" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Hang 5 (Chuột 5) -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mouse_hole_5"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_margin="2dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:layout_constraintDimensionRatio="434:760"
                 app:layout_constraintBottom_toBottomOf="@id/mouse_hole_4"
                 app:layout_constraintEnd_toStartOf="@id/mouse_hole_6"
                 app:layout_constraintStart_toEndOf="@id/mouse_hole_4"
                 app:layout_constraintTop_toTopOf="@id/mouse_hole_4">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:scaleX="1.5"
-                    android:scaleY="1.5"
-                    android:src="@drawable/chuot" />
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/chuot"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_ans_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="28dp"
+                    android:gravity="center"
                     android:text="35"
                     android:textColor="#B5214D"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.13" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Hang 6 (Chuột 6) -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mouse_hole_6"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_margin="2dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:layout_constraintDimensionRatio="434:760"
                 app:layout_constraintBottom_toBottomOf="@id/mouse_hole_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/mouse_hole_5"
                 app:layout_constraintTop_toTopOf="@id/mouse_hole_4">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:scaleX="1.5"
-                    android:scaleY="1.5"
-                    android:src="@drawable/chuot" />
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/chuot"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_ans_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="28dp"
+                    android:gravity="center"
                     android:text="18"
                     android:textColor="#B5214D"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.13" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

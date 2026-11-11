@@ -16,10 +16,10 @@
         <!-- Nút Thoát (Mũi tên cam) -->
         <ImageButton
             android:id="@+id/btn_game_back"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:background="@android:color/transparent"
             android:contentDescription="Thoát"
             android:scaleType="fitCenter"
@@ -30,8 +30,8 @@
         <!-- Nút Tạm dừng -->
         <ImageButton
             android:id="@+id/btn_game_pause"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="0dp"
             android:background="@android:color/transparent"
             android:contentDescription="Tạm dừng"
@@ -55,22 +55,22 @@
 
             <ImageView
                 android:id="@+id/img_heart1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:contentDescription="Mạng 1"
                 android:src="@drawable/tim" />
 
             <ImageView
                 android:id="@+id/img_heart2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:contentDescription="Mạng 2"
                 android:src="@drawable/tim" />
 
             <ImageView
                 android:id="@+id/img_heart3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:contentDescription="Mạng 3"
                 android:src="@drawable/tim" />
         </LinearLayout>
@@ -122,7 +122,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="6dp"
-                android:contentDescription="Ngôi sao"
+                android:importantForAccessibility="no"
                 android:src="@drawable/sao" />
 
             <TextView

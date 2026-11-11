@@ -13,13 +13,13 @@
 
         <!-- ================= THANH ĐIỀU KHIỂN & TRẠNG THÁI PHÍA TRÊN ================= -->
 
-        <!-- Nút Thoát -->
+        <!-- Nút Thoát (Mũi tên cam) -->
         <ImageButton
             android:id="@+id/btn_game_back"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:background="@android:color/transparent"
             android:contentDescription="Thoát"
             android:scaleType="fitCenter"
@@ -30,8 +30,8 @@
         <!-- Nút Tạm dừng -->
         <ImageButton
             android:id="@+id/btn_game_pause"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="0dp"
             android:background="@android:color/transparent"
             android:contentDescription="Tạm dừng"
@@ -55,22 +55,22 @@
 
             <ImageView
                 android:id="@+id/img_heart1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:contentDescription="Mạng 1"
                 android:src="@drawable/tim" />
 
             <ImageView
                 android:id="@+id/img_heart2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:contentDescription="Mạng 2"
                 android:src="@drawable/tim" />
 
             <ImageView
                 android:id="@+id/img_heart3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:contentDescription="Mạng 3"
                 android:src="@drawable/tim" />
         </LinearLayout>
@@ -97,14 +97,13 @@
                 android:id="@+id/tv_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:text="10s"
                 android:textColor="#0B1B72"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Thanh hiển thị điểm Kinh nghiệm bên phải ngoài cùng -->
+        <!-- Thanh hiển thị điểm Kinh nghiệm (Sao vàng) bên phải ngoài cùng -->
         <LinearLayout
             android:id="@+id/layout_score_box"
             android:layout_width="wrap_content"
@@ -142,7 +141,7 @@
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/bg_quiz_card"
             android:elevation="4dp"

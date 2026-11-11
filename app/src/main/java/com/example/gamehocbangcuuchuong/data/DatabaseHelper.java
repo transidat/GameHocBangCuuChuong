@@ -20,7 +20,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "GameHocBangCuuChuong.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // --- TÊN BẢNG VÀ CÁC CỘT CHO PLAYER ---
     public static final String TABLE_PLAYER = "players";
@@ -120,14 +120,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Kho dữ liệu nhiệm vụ mặc định ban đầu
     private void seedDefaultMissions(SQLiteDatabase db) {
         // Nhiệm vụ HÔM NAY (Today) - Đủ cả 4 game
-        insertMissionWithDb(db, "Dũng sĩ đập chuột", "Đập trúng 10 chú chuột", 0, 10, 10, R.drawable.bua, "#FFF176", R.layout.layout_dap_chuot, "today");
+        insertMissionWithDb(db, "Dũng sĩ đập chuột", "Đập trúng 10 chú chuột", 0, 10, 10, R.drawable.iconchuot, "#FFF176", R.layout.layout_dap_chuot, "today");
         insertMissionWithDb(db, "Khéo tay hứng bóng", "Hứng 10 quả bóng chính xác", 0, 10, 10, R.drawable.iconbong, "#A5D6A7", R.layout.layout_hung_bong, "today");
         insertMissionWithDb(db, "Tay lái cừ khôi", "Vượt qua 10 chặng đua xe", 0, 10, 10, R.drawable.iconxe, "#FFCC80", R.layout.layout_dua_xe, "today");
-        insertMissionWithDb(db, "Tay chèo nhanh nhạy", "Chèo thuyền qua 10 chướng ngại vật", 0, 10, 10, R.drawable.thuyen, "#90CAF9", R.layout.layout_cheo_thuyen, "today");
+        insertMissionWithDb(db, "Tay chèo nhanh nhạy", "Chèo thuyền qua 10 chướng ngại vật", 0, 10, 10, R.drawable.iconthuyen, "#90CAF9", R.layout.layout_cheo_thuyen, "today");
 
         // Nhiệm vụ TUẦN NÀY (Week) - Đủ cả 4 game
-        insertMissionWithDb(db, "Thợ chèo thuyền", "Chèo thuyền qua 20 chướng ngại vật", 0, 20, 20, R.drawable.thuyen, "#90CAF9", R.layout.layout_cheo_thuyen, "week");
-        insertMissionWithDb(db, "Vua đập chuột", "Đập trúng 30 chú chuột", 0, 30, 30, R.drawable.bua, "#FFF176", R.layout.layout_dap_chuot, "week");
+        insertMissionWithDb(db, "Thợ chèo thuyền", "Chèo thuyền qua 20 chướng ngại vật", 0, 20, 20, R.drawable.iconthuyen, "#90CAF9", R.layout.layout_cheo_thuyen, "week");
+        insertMissionWithDb(db, "Vua đập chuột", "Đập trúng 30 chú chuột", 0, 30, 30, R.drawable.iconchuot, "#FFF176", R.layout.layout_dap_chuot, "week");
         insertMissionWithDb(db, "Siêu sao hứng bóng", "Hứng 30 quả bóng chính xác", 0, 30, 30, R.drawable.iconbong, "#A5D6A7", R.layout.layout_hung_bong, "week");
         insertMissionWithDb(db, "Tay đua huyền thoại", "Vượt qua 30 chặng đua xe", 0, 30, 30, R.drawable.iconxe, "#FFCC80", R.layout.layout_dua_xe, "week");
     }

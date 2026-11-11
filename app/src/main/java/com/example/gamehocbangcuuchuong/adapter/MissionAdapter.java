@@ -60,10 +60,11 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
         }
 
         try {
+            float density = context.getResources().getDisplayMetrics().density;
             int bgColor = Color.parseColor(mission.getIconBgColor() != null ? mission.getIconBgColor() : "#FFF176");
             GradientDrawable shape = new GradientDrawable();
             shape.setShape(GradientDrawable.RECTANGLE);
-            shape.setCornerRadius(32f); // Bo góc 16dp
+            shape.setCornerRadius(16f * density); // Bo góc 16dp
             shape.setColor(bgColor);
             holder.layoutIconContainer.setBackground(shape);
         } catch (Exception e) {

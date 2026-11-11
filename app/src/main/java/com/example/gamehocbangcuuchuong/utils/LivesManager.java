@@ -39,7 +39,7 @@ public class LivesManager {
 
         container.removeAllViews();
         float density = context.getResources().getDisplayMetrics().density;
-        int size = (int) (22 * density);
+        int size = (int) (20 * density);
         int margin = (int) (2 * density);
 
         for (int i = 0; i < lives; i++) {

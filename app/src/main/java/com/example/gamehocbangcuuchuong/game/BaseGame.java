@@ -1,8 +1,15 @@
 package com.example.gamehocbangcuuchuong.game;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
@@ -36,6 +43,10 @@ public abstract class BaseGame {
     protected View layoutGameContent;
     protected TextView tvScore, tvTimer, tvQuestionText, tvCombo;
     protected View btnBack, btnPause;
+
+    // Toast/Banner thông báo cộng điểm phía trên
+    private TextView tvScoreToast;
+    private Runnable hideToastRunnable;
 
     public BaseGame(MainActivity activity, View view, String gameName, int gameLayoutId) {
         this.activity = activity;
@@ -136,6 +147,10 @@ public abstract class BaseGame {
         if (gameTimer != null) {
             gameTimer.pause();
         }
+        if (tvScoreToast != null) {
+            if (hideToastRunnable != null) tvScoreToast.removeCallbacks(hideToastRunnable);
+            tvScoreToast.setVisibility(View.GONE);
+        }
         if (layoutGameContent != null) {
             layoutGameContent.setVisibility(View.INVISIBLE);
         }
@@ -198,11 +213,80 @@ public abstract class BaseGame {
 
         updateScoreAndComboUI();
 
-        String toastMsg = (comboCount > 1)
+        String notificationMsg = (comboCount > 1)
                 ? actionMessage + " Combo x" + comboCount + " (+" + pointsGained + " KN) " + emoji
                 : actionMessage + " (+" + pointsGained + " KN) " + emoji;
-        Toast.makeText(activity, toastMsg, Toast.LENGTH_SHORT).show();
+
+        showInAppScoreNotification(notificationMsg);
 
         return pointsGained;
+    }
+
+    /**
+     * Hiển thị banner thông báo cộng điểm ở phía trên màn hình (ngay dưới thanh Combo),
+     * tuyệt đối không đè lên các nút đáp án ở phía dưới.
+     */
+    protected void showInAppScoreNotification(String text) {
+        if (view == null || !(view instanceof ViewGroup)) return;
+
+        if (tvScoreToast == null) {
+            tvScoreToast = new TextView(activity);
+            tvScoreToast.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+            tvScoreToast.setTextColor(Color.WHITE);
+            tvScoreToast.setTypeface(null, Typeface.BOLD);
+            tvScoreToast.setGravity(Gravity.CENTER);
+
+            float density = activity.getResources().getDisplayMetrics().density;
+            int padH = (int) (16 * density);
+            int padV = (int) (8 * density);
+            tvScoreToast.setPadding(padH, padV, padH, padV);
+
+            // Nền viên thuốc bo tròn màu xám đen trong suốt nhẹ
+            GradientDrawable shape = new GradientDrawable();
+            shape.setShape(GradientDrawable.RECTANGLE);
+            shape.setCornerRadius(24 * density);
+            shape.setColor(Color.parseColor("#E6222222"));
+            tvScoreToast.setBackground(shape);
+
+            tvScoreToast.setElevation(8 * density);
+
+            ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(
+                    ConstraintLayout.LayoutParams.WRAP_CONTENT,
+                    ConstraintLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.topToBottom = R.id.layout_combo;
+            params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
+            params.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
+            params.topMargin = (int) (6 * density);
+
+            tvScoreToast.setLayoutParams(params);
+
+            View gameContent = view.findViewById(R.id.layout_game_content);
+            if (gameContent instanceof ViewGroup) {
+                ((ViewGroup) gameContent).addView(tvScoreToast);
+            } else {
+                ((ViewGroup) view).addView(tvScoreToast);
+            }
+        }
+
+        if (hideToastRunnable != null) {
+            tvScoreToast.removeCallbacks(hideToastRunnable);
+        }
+
+        tvScoreToast.setText(text);
+        tvScoreToast.setVisibility(View.VISIBLE);
+        tvScoreToast.setAlpha(1.0f);
+        tvScoreToast.bringToFront();
+
+        hideToastRunnable = () -> {
+            if (tvScoreToast != null) {
+                tvScoreToast.animate()
+                        .alpha(0.0f)
+                        .setDuration(250)
+                        .withEndAction(() -> tvScoreToast.setVisibility(View.GONE))
+                        .start();
+            }
+        };
+        tvScoreToast.postDelayed(hideToastRunnable, 1200);
     }
 }

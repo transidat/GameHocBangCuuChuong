@@ -8,22 +8,22 @@
     <!-- ================= THANH TRẠNG THÁI PHÍA TRÊN ================= -->
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:contentDescription="Quay lại"
         android:scaleType="fitCenter"
         android:src="@drawable/thoat"
+        app:layout_constraintBottom_toBottomOf="@id/layout_title_achievement"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/layout_title_achievement" />
 
     <FrameLayout
         android:id="@+id/layout_title_achievement"
-        android:layout_width="160dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/khungtieude"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
             android:layout_gravity="center"
             android:text="Thành tích"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
     </FrameLayout>
 
@@ -80,7 +80,7 @@
         android:fillViewport="true"
         android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back">
+        app:layout_constraintTop_toBottomOf="@id/layout_title_achievement">
 
         <LinearLayout
             android:layout_width="match_parent"
