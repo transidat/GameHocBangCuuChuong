@@ -34,7 +34,7 @@ public class HungBongGame extends BaseGame {
     private final float[] laneBiases = {0.18f, 0.50f, 0.82f};
 
     // Tốc độ rơi bóng
-    private static final long BALL_FALL_DURATION = 8500;
+    private static final long BALL_FALL_DURATION = 10200;
     private final Handler ballHandler = new Handler(Looper.getMainLooper());
 
     // View riêng
@@ -196,7 +196,7 @@ public class HungBongGame extends BaseGame {
             }
         }
 
-        gameTimer.start(20000);
+        gameTimer.start(10000);
         startFallingAllBalls();
     }
 
@@ -215,8 +215,8 @@ public class HungBongGame extends BaseGame {
             if (ballView == null) continue;
 
             ballHasStarted[laneIndex] = false;
-            ballScheduledDelay[laneIndex] = step * 1000L;
-            ballRemainingDelay[laneIndex] = step * 1000L;
+            ballScheduledDelay[laneIndex] = step * 1500L;
+            ballRemainingDelay[laneIndex] = step * 1500L;
 
             ballView.setVisibility(View.INVISIBLE);
             ballView.setTranslationY(0f);
@@ -265,7 +265,7 @@ public class HungBongGame extends BaseGame {
 
             ballAnimators[laneIndex] = animator;
 
-            long delay = step * 1000L;
+            long delay = step * 1500L;
             ballHandler.postDelayed(() -> {
                 if (isAnswerChecked || isPaused) return;
                 ballHasStarted[laneIndex] = true;

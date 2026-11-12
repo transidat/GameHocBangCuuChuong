@@ -33,6 +33,8 @@ public abstract class BaseGame {
     protected int gameLives = 3;
     protected int correctAnswersCount = 0;
     protected int comboCount = 0;
+    protected int totalQuestionsCount = 0;
+    protected static final int MAX_QUESTIONS_PER_GAME = 10;
     protected boolean isPaused = false;
     protected boolean isAnswerChecked = false;
     protected Question currentQuestion;
@@ -73,6 +75,7 @@ public abstract class BaseGame {
         gameLives = 3;
         correctAnswersCount = 0;
         comboCount = 0;
+        totalQuestionsCount = 0;
         isPaused = false;
         isAnswerChecked = false;
 
@@ -124,10 +127,12 @@ public abstract class BaseGame {
 
         updateHeartsUI();
 
-        if (gameLives <= 0) {
+        if (gameLives <= 0 || totalQuestionsCount >= MAX_QUESTIONS_PER_GAME) {
             showResultScreen();
             return false;
         }
+
+        totalQuestionsCount++;
         return true;
     }
 
@@ -178,7 +183,7 @@ public abstract class BaseGame {
         stopTimer();
         long durationSeconds = Math.max(1, (gameTimer != null ? gameTimer.getTotalPlayTimeMs() : 0) / 1000);
         int bonus = ScoreManager.calculateBonusScore(gameScore);
-        activity.showResultScreen(gameName, gameLayoutId, gameScore, correctAnswersCount, durationSeconds, bonus);
+        activity.showResultScreen(gameName, gameLayoutId, gameScore, correctAnswersCount, totalQuestionsCount, durationSeconds, bonus);
     }
 
     protected void handleWrongAnswer(String message, Runnable onNextQuestion) {

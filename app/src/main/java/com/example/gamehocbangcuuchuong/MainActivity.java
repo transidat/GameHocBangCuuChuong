@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setupScreenLogic(layoutId, view);
     }
 
-    public void showResultScreen(String gameName, int gameLayoutId, int score, int correctCount, long durationSeconds, int bonus) {
+    public void showResultScreen(String gameName, int gameLayoutId, int score, int correctCount, int totalQuestions, long durationSeconds, int bonus) {
         stopActiveGames();
         this.lastPlayedGameLayout = gameLayoutId;
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         int finalTotalScore = ScoreManager.addTotalScore(this, db, playerName, score);
 
         String playDate = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(new Date());
-        db.insertGameResult(new GameResult(playerName, gameName, score, correctCount, correctCount, playDate));
+        db.insertGameResult(new GameResult(playerName, gameName, score, correctCount, totalQuestions, playDate));
 
         if (correctCount > 0) {
             db.incrementMissionProgressByGame(gameLayoutId, correctCount);
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             tvScore.setText(String.valueOf(score));
         }
         if (tvCorrectCount != null) {
-            tvCorrectCount.setText(String.valueOf(correctCount));
+            tvCorrectCount.setText(getString(R.string.progress_ratio_format, correctCount, totalQuestions));
         }
         if (tvDuration != null) {
             long minutes = durationSeconds / 60;
