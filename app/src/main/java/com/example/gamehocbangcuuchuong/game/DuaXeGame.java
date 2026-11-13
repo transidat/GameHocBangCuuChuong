@@ -17,7 +17,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
 import com.example.gamehocbangcuuchuong.utils.GameTimer;
-import com.example.gamehocbangcuuchuong.utils.QuestionGenerator;
 
 import java.util.Random;
 
@@ -125,7 +124,7 @@ public class DuaXeGame extends BaseGame {
             }
         }
 
-        currentQuestion = QuestionGenerator.generateQuestion(4);
+        currentQuestion = getNextQuestion(4);
         if (tvQuestionText != null) {
             tvQuestionText.setText(currentQuestion.getQuestionText());
         }

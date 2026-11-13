@@ -41,20 +41,34 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!-- TẦNG 1: Điểm kinh nghiệm (KN) nằm TRÊN CÙNG bên phải -->
+                <!-- Nút Cài đặt (Bánh răng) nằm ngoài cùng bên phải -->
+                <ImageButton
+                    android:id="@+id/btn_cai_dat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Cài đặt"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/iconcaidat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- TẦNG 1: Điểm kinh nghiệm (KN) nằm bên trái Nút Cài đặt -->
                 <LinearLayout
                     android:id="@+id/layout_exp"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/bg_pill_white"
                     android:elevation="2dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingHorizontal="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintBottom_toBottomOf="@id/btn_cai_dat"
+                    app:layout_constraintEnd_toStartOf="@id/btn_cai_dat"
+                    app:layout_constraintTop_toTopOf="@id/btn_cai_dat">
 
                     <ImageView
                         android:layout_width="20dp"

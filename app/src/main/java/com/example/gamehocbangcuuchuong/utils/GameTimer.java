@@ -67,14 +67,6 @@ public class GameTimer {
         stopTimerOnly();
     }
 
-    public void reset() {
-        stopTimerOnly();
-        isPaused = false;
-        totalPlayTimeMs = 0;
-        turnStartTime = 0;
-        remainingMs = 0;
-    }
-
     public void accumulatePlayTime() {
         if (turnStartTime > 0) {
             totalPlayTimeMs += (System.currentTimeMillis() - turnStartTime);
@@ -89,10 +81,6 @@ public class GameTimer {
         }
     }
 
-    public long getRemainingMs() {
-        return remainingMs;
-    }
-
     public long getTotalPlayTimeMs() {
         if (turnStartTime > 0) {
             return totalPlayTimeMs + (System.currentTimeMillis() - turnStartTime);
@@ -100,7 +88,5 @@ public class GameTimer {
         return totalPlayTimeMs;
     }
 
-    public boolean isPaused() {
-        return isPaused;
-    }
+
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gamehocbangcuuchuong.data.DatabaseHelper;
+import com.example.gamehocbangcuuchuong.manager.CaiDatManager;
 import com.example.gamehocbangcuuchuong.manager.GameManager;
 import com.example.gamehocbangcuuchuong.manager.NhiemVuManager;
 import com.example.gamehocbangcuuchuong.manager.ThanhTichManager;
@@ -123,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
                    layoutId == R.layout.layout_dua_xe ||
                    layoutId == R.layout.layout_cheo_thuyen) {
             gameManager.startGame(layoutId, this, view);
+        } else if (layoutId == R.layout.layout_cai_dat) {
+            CaiDatManager.setup(this, view, sharedPreferences);
         } else if (layoutId == R.layout.layout_ket_qua) {
             setupKetQuaScreen(view);
         }
@@ -176,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
         View btnCheoThuyen = view.findViewById(R.id.btn_game_cheo_thuyen);
         View btnNhiemVu = view.findViewById(R.id.btn_nhiem_vu);
         View btnThanhTich = view.findViewById(R.id.btn_thanh_tich);
+        View btnCaiDat = view.findViewById(R.id.btn_cai_dat);
 
         if (btnDapChuot != null) btnDapChuot.setOnClickListener(v -> showScreen(R.layout.layout_dap_chuot));
         if (btnHungBong != null) btnHungBong.setOnClickListener(v -> showScreen(R.layout.layout_hung_bong));
@@ -183,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
         if (btnCheoThuyen != null) btnCheoThuyen.setOnClickListener(v -> showScreen(R.layout.layout_cheo_thuyen));
         if (btnNhiemVu != null) btnNhiemVu.setOnClickListener(v -> showScreen(R.layout.layout_nhiem_vu));
         if (btnThanhTich != null) btnThanhTich.setOnClickListener(v -> showScreen(R.layout.layout_thanh_tich));
+        if (btnCaiDat != null) btnCaiDat.setOnClickListener(v -> showScreen(R.layout.layout_cai_dat));
     }
 
     private void setupKetQuaScreen(View view) {

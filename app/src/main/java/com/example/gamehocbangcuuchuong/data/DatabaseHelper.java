@@ -258,9 +258,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_MISSION, values, COLUMN_MISSION_ID + " = ?", new String[]{String.valueOf(missionId)});
     }
 
-    public void updateMissionProgress(int missionId, int currentProgress, boolean isCompleted) {
-        updateMissionProgress(this.getWritableDatabase(), missionId, currentProgress, isCompleted);
-    }
+
 
     // Cập nhật trạng thái nhận thưởng nhiệm vụ
     public void setMissionRewardClaimed(int missionId, boolean isClaimed) {

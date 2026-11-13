@@ -22,12 +22,6 @@ public class LivesManager {
         this.heart3 = rootView.findViewById(R.id.img_heart3);
     }
 
-    public LivesManager(ImageView heart1, ImageView heart2, ImageView heart3) {
-        this.heart1 = heart1;
-        this.heart2 = heart2;
-        this.heart3 = heart3;
-    }
-
     public void updateHearts(int lives) {
         if (heart1 != null) heart1.setVisibility(lives >= 1 ? View.VISIBLE : View.INVISIBLE);
         if (heart2 != null) heart2.setVisibility(lives >= 2 ? View.VISIBLE : View.INVISIBLE);

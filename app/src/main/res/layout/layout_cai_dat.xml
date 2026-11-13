@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nenchung">
+
+    <!-- ================= THANH TRẠNG THÁI PHÍA TRÊN (HEADER ĐỒNG BỘ) ================= -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Quay lại"
+        android:scaleType="fitCenter"
+        android:src="@drawable/thoat"
+        app:layout_constraintBottom_toBottomOf="@id/layout_title_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layout_title_settings" />
+
+    <FrameLayout
+        android:id="@+id/layout_title_settings"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/khungtieude"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cài đặt"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- ================= THẺ CÀI ĐẶT CHÍNH ================= -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_settings_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/bg_settings_card"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_title_settings">
+
+        <LinearLayout
+            android:id="@+id/layout_range_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Ngôi sao"
+                android:src="@drawable/sao" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phạm vi bảng cửu chương"
+                android:textColor="#B5214D"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Hộp capsule chọn phạm vi từ min đến max -->
+        <LinearLayout
+            android:id="@+id/layout_range_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_settings_range_box"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_range_title">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="Từ"
+                android:textColor="#B5214D"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_decrease_min"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="3dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Giảm từ"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icontru" />
+
+            <TextView
+                android:id="@+id/tv_min_range"
+                android:layout_width="36dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_range_num_pill"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_increase_min"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Tăng từ"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconcong" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="Đến"
+                android:textColor="#B5214D"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_decrease_max"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="3dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Giảm đến"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icontru" />
+
+            <TextView
+                android:id="@+id/tv_max_range"
+                android:layout_width="36dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_range_num_pill"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_increase_max"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="3dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Tăng đến"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconcong" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/img_mascot_bear"
+        android:layout_width="175dp"
+        android:layout_height="115dp"
+        android:layout_marginBottom="-18dp"
+        android:contentDescription="Chú gấu"
+        android:elevation="6dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icongaucaidat"
+        app:layout_constraintBottom_toTopOf="@id/layout_settings_card"
+        app:layout_constraintEnd_toEndOf="@id/layout_settings_card"
+        app:layout_constraintStart_toStartOf="@id/layout_settings_card" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

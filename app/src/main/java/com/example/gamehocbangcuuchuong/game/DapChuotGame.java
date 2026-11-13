@@ -6,7 +6,6 @@ import android.widget.TextView;
 import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
 import com.example.gamehocbangcuuchuong.utils.GameTimer;
-import com.example.gamehocbangcuuchuong.utils.QuestionGenerator;
 
 public class DapChuotGame extends BaseGame {
     private View[] mouseHoles;
@@ -69,7 +68,7 @@ public class DapChuotGame extends BaseGame {
     private void loadNextQuestion() {
         if (!prepareTurn()) return;
 
-        currentQuestion = QuestionGenerator.generateQuestion();
+        currentQuestion = getNextQuestion(6);
         if (tvQuestionText != null) {
             tvQuestionText.setText(currentQuestion.getQuestionText());
         }

@@ -17,7 +17,10 @@ import com.example.gamehocbangcuuchuong.dialog.GameDialog;
 import com.example.gamehocbangcuuchuong.model.Question;
 import com.example.gamehocbangcuuchuong.utils.GameTimer;
 import com.example.gamehocbangcuuchuong.utils.LivesManager;
+import com.example.gamehocbangcuuchuong.utils.QuestionGenerator;
 import com.example.gamehocbangcuuchuong.utils.ScoreManager;
+
+import java.util.List;
 
 /**
  * Lớp cơ sở chứa logic và thành phần giao diện dùng chung cho các trò chơi mini game.
@@ -40,6 +43,10 @@ public abstract class BaseGame {
     protected Question currentQuestion;
     protected GameTimer gameTimer;
     protected LivesManager livesManager;
+
+    // Quản lý danh sách câu hỏi không trùng lặp
+    protected List<Question> questionPool;
+    protected int currentQuestionIndex = 0;
 
     // View dùng chung
     protected View layoutGameContent;
@@ -78,6 +85,8 @@ public abstract class BaseGame {
         totalQuestionsCount = 0;
         isPaused = false;
         isAnswerChecked = false;
+        questionPool = null;
+        currentQuestionIndex = 0;
 
         updateScoreAndComboUI();
 
@@ -108,6 +117,20 @@ public abstract class BaseGame {
                 });
             });
         }
+    }
+
+    protected void initQuestionPool(int totalAnswers) {
+        questionPool = QuestionGenerator.generateQuestionList(activity, MAX_QUESTIONS_PER_GAME, totalAnswers);
+        currentQuestionIndex = 0;
+    }
+
+    protected Question getNextQuestion(int totalAnswers) {
+        if (questionPool == null || questionPool.isEmpty() || currentQuestionIndex >= questionPool.size()) {
+            initQuestionPool(totalAnswers);
+        }
+        Question q = questionPool.get(currentQuestionIndex);
+        currentQuestionIndex++;
+        return q;
     }
 
     protected void updateHeartsUI() {

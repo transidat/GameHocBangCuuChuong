@@ -15,7 +15,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.gamehocbangcuuchuong.MainActivity;
 import com.example.gamehocbangcuuchuong.R;
 import com.example.gamehocbangcuuchuong.utils.GameTimer;
-import com.example.gamehocbangcuuchuong.utils.QuestionGenerator;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -181,7 +180,7 @@ public class HungBongGame extends BaseGame {
             return;
         }
 
-        currentQuestion = QuestionGenerator.generateQuestion(3);
+        currentQuestion = getNextQuestion(3);
         if (tvQuestionText != null) {
             tvQuestionText.setText(currentQuestion.getQuestionText());
         }

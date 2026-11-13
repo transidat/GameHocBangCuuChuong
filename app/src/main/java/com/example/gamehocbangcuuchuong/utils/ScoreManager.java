@@ -33,22 +33,10 @@ public class ScoreManager {
         return gameScore;
     }
 
-    // Kiểm tra xem điểm số hiện tại có vượt qua điểm cao nhất không
-    public static boolean isHighScore(int currentScore, int highScore) {
-        return currentScore > highScore;
-    }
-
     // Lấy điểm cao nhất của người chơi từ SharedPreferences
     public static int getHighScore(Context context, String playerName) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return prefs.getInt(KEY_HIGH_SCORE_PREFIX + playerName, 0);
-    }
-
-    // Lưu điểm cao nhất mới cho người chơi (nếu cao hơn điểm cũ)
-    public static boolean checkAndSaveHighScore(Context context, String playerName, int newScore) {
-        DatabaseHelper dbHelper = (context instanceof com.example.gamehocbangcuuchuong.MainActivity) 
-                ? ((com.example.gamehocbangcuuchuong.MainActivity) context).getDbHelper() : null;
-        return checkAndSaveHighScore(context, dbHelper, playerName, newScore);
     }
 
     public static boolean checkAndSaveHighScore(Context context, DatabaseHelper dbHelper, String playerName, int newScore) {
@@ -82,13 +70,6 @@ public class ScoreManager {
     public static int getTotalScore(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return prefs.getInt(KEY_TOTAL_SCORE, 0);
-    }
-
-    // Cộng thêm điểm kinh nghiệm (KN) và lưu vào SharedPreferences + Database
-    public static int addTotalScore(Context context, String playerName, int scoreToAdd) {
-        DatabaseHelper dbHelper = (context instanceof com.example.gamehocbangcuuchuong.MainActivity) 
-                ? ((com.example.gamehocbangcuuchuong.MainActivity) context).getDbHelper() : null;
-        return addTotalScore(context, dbHelper, playerName, scoreToAdd);
     }
 
     public static int addTotalScore(Context context, DatabaseHelper dbHelper, String playerName, int scoreToAdd) {
